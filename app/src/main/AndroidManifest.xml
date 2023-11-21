@@ -12,6 +12,9 @@
         android:theme="@style/Theme.EasyGrade"
         tools:targetApi="31">
         <activity
+            android:name=".AvaliacaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
