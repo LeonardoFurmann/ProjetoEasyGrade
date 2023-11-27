@@ -14,4 +14,5 @@ class CadastroAvaliacaoActivity : AppCompatActivity() {
 
         setContentView(binding.root);
     }
+
 }

@@ -15,6 +15,10 @@
             android:name=".View.CadastroDisciplinaActivity"
             android:exported="false" />
         <activity
+            android:name=".View.CadastroAvaliacaoActivity"
+            android:exported="true"/>
+
+        <activity
             android:name=".View.AvaliacaoActivity"
             android:exported="false" />
         <activity
