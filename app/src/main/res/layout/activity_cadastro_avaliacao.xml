@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.MainActivity"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Avaliação"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/edtNota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nota"
+        android:layout_marginBottom="10dp"
+        android:inputType="numberDecimal"
+        />
+
+    <EditText
+        android:id="@+id/edtPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Peso"
+        android:layout_marginBottom="10dp"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/edtMedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:id="@+id/edtConteudos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Conteúdos"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Cadastrar"
+        />
+</LinearLayout>
