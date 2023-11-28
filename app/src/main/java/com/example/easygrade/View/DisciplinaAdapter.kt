@@ -22,7 +22,7 @@ class DisciplinaAdapter (var context: Context): RecyclerView.Adapter<DisciplinaV
     override fun onBindViewHolder(holder: DisciplinaViewHolder, position: Int) {
         val disciplina = dao.getDisciplina(position)
         //val nota_peso = disciplina.nota.toString() + "/" + disciplina.peso.toString();
-        holder.txtDisciplina.text = "${disciplina.nome} "
+       // holder.txtDisciplina.text = "${disciplina.nome} "
        // holder.txtDataAvaliacao.text = "${avaliacao.data}"
 
 
