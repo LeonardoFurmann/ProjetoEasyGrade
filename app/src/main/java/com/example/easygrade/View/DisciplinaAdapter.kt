@@ -1,6 +1,7 @@
 package com.example.easygrade.View
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +21,13 @@ class DisciplinaAdapter (var context: Context): RecyclerView.Adapter<DisciplinaV
     }
 
     override fun onBindViewHolder(holder: DisciplinaViewHolder, position: Int) {
-        val disciplina = dao.getDisciplina(position)
-        //val nota_peso = disciplina.nota.toString() + "/" + disciplina.peso.toString();
-       // holder.txtDisciplina.text = "${disciplina.nome} "
-       // holder.txtDataAvaliacao.text = "${avaliacao.data}"
+        val disciplina = dao.getDisciplina(position + 1);
 
+        val fakeNota = 7; // todo calcular a nota somando todos as notas das avaliacoes
+
+        //val nota_peso = disciplina.nota.toString() + "/" + disciplina.peso.toString();
+        holder.txtDisciplina.text = "${disciplina.nome} "
+        holder.txtNota.text = "${fakeNota}/${disciplina.media}";
 
 /* todo
         holder.txtMarcaModelo.setOnLongClickListener {

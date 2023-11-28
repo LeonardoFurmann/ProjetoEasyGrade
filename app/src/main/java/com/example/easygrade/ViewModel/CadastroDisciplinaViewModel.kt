@@ -7,14 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import com.example.easygrade.Model.Disciplina
 import com.example.easygrade.Repository.DisciplinaRepository
 
-
 class CadastroDisciplinaViewModel(application: Application) : AndroidViewModel(application) {
 
     private var txtToast = MutableLiveData<String>()
     private var disciplinaRepository = DisciplinaRepository(application.applicationContext)
-
-
-
 
     fun getTxtToast() : LiveData<String> {
         return txtToast
