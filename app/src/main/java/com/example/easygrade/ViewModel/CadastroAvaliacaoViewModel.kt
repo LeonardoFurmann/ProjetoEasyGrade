@@ -16,12 +16,31 @@ class CadastroAvaliacaoViewModel(application: Application) : AndroidViewModel(ap
         return txtToast
     }
 
-    fun salvar(nomeAva: String, notaAva: Double, pesoAva: Double, dataAva: String, counteudosAva: String, idDisciplina: Int) : Boolean {
+    fun salvar(nomeAva: String, notaAva: String, pesoAva: String, dataAva: String, counteudosAva: String, idDisciplina: Int, idAvaliacao: Int) : Boolean {
+        // Validacoes
+        if (validarCampos(nomeAva, "Nome")) {
+            return false;
+        }
 
-        // Todo tafazer validacoes
+        if(validarCampos(notaAva, "Nota")) {
+            return false;
+        }
+
+        if(validarCampos(dataAva, "data")) {
+            return false;
+        }
+
+        if(validarCampos(counteudosAva, "conteudos")) {
+            return false;
+        }
+
+        if(idDisciplina < 0) {
+            txtToast.value = "Erro ao salver avaliaçao";
+            return false;
+        }
 
         // criar objeto do tipo avaliacao
-        var avaliacao = Avaliacao(0, nomeAva, notaAva, pesoAva, dataAva, counteudosAva, idDisciplina);
+        var avaliacao = Avaliacao(0, nomeAva, notaAva.toDouble(), pesoAva.toDouble(), dataAva, counteudosAva, idDisciplina);
 
         // tentar salvar objeto criado acima
         if (!avaliacaoRepository.salvar(avaliacao)) {
@@ -29,7 +48,16 @@ class CadastroAvaliacaoViewModel(application: Application) : AndroidViewModel(ap
             return false
         }
 
-        txtToast.value = "Salvo com sucesso!"
-        return true
+        txtToast.value = "Salvo com sucesso!";
+        return true;
+    }
+
+    fun validarCampos(valorDoCampo: String, nomeDoCampo: String): Boolean {
+        if(valorDoCampo.isEmpty()) {
+            txtToast.value = "Por favor, preencha o campo: '${nomeDoCampo}'";
+            return true;
+        }
+
+        return  false;
     }
 }
