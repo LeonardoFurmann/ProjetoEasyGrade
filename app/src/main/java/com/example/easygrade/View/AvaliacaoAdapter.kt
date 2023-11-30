@@ -1,6 +1,7 @@
 package com.example.easygrade.View
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,31 +12,40 @@ class AvaliacaoAdapter (var context: Context): RecyclerView.Adapter<AvaliacaoVie
 {
 
     val dao = EasyDB.getInstance(context).getAvaliacaoDAO()
-    val listaAvaliacao = dao.getAvaliacoes()
+    var listaAvaliacao = dao.getAvaliacoes()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AvaliacaoViewHolder {
-        val layoutCarro = LayoutInflater.from(parent.context)
+        val layoutAvaliacao = LayoutInflater.from(parent.context)
             .inflate(R.layout.avaliacao_layout, parent, false)
-        return AvaliacaoViewHolder(layoutCarro)
+        return AvaliacaoViewHolder(layoutAvaliacao)
     }
 
     override fun onBindViewHolder(holder: AvaliacaoViewHolder, position: Int) {
-        val avaliacao = dao.getAvaliacao(position)
+        val avaliacao = dao.getAvaliacao(position + 1)
         val nota_peso = avaliacao.nota.toString() + "/" + avaliacao.peso.toString();
-        holder.txtAvaliacao.text = "${avaliacao.nome} - ${nota_peso})"
+        holder.txtAvaliacao.text = "${avaliacao.nome} - ${nota_peso}"
         holder.txtDataAvaliacao.text = "${avaliacao.data}"
-/* todo
-        holder.txtMarcaModelo.setOnLongClickListener {
-            // enviar a posição do elemento atual para a DetalhesActivity
-            var intent = Intent(context, DetalhesActivity::class.java)
-            intent.putExtra("position", position)
+
+        holder.txtAvaliacao.setOnLongClickListener {
+
+//           var avaliacao =  dao.getAvaliacao(position + 1);
+//           dao.deletar(avaliacao);
+//            true
+
+            var intent = Intent(context, CadastroAvaliacaoActivity::class.java)
+            intent.putExtra("idAvaliacao", position + 1)
             context.startActivity(intent)
             true
         }
-*/
+
     }
     override fun getItemCount(): Int {
         return listaAvaliacao.size
     }
 
+    fun atualizaAdapter(){
+        listaAvaliacao = emptyList()
+        listaAvaliacao = dao.getAvaliacoes()
+        notifyDataSetChanged()
+    }
 }

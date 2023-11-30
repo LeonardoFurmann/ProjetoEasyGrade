@@ -11,7 +11,7 @@ class CadastroAvaliacaoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCadastroAvaliacaoBinding
     private lateinit var cadastroAvaliacaoViewModel: CadastroAvaliacaoViewModel
-
+    private var idAvaliacao = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,6 +21,19 @@ class CadastroAvaliacaoActivity : AppCompatActivity() {
         cadastroAvaliacaoViewModel = ViewModelProvider(this).get(CadastroAvaliacaoViewModel::class.java)
         setObserver();
 
+        var disciplina = intent.getIntExtra("disciplina", -1)
+        if (disciplina == -1){ finish() }
+
+         idAvaliacao = intent.getIntExtra("idAvaliacao", -1)
+
+        /*
+            if (id > 0) {
+             var temp = cadastroDisciplinaViewModel.getJogador(id)
+             binding.txtTitulo.text = "Editar Jogador"
+             binding.edtNome.setText(temp.nome)
+              binding.edtSexo.setText(temp.sexo)
+           }*/
+
         // Clicar em salver
         binding.btnCadastrar.setOnClickListener {
             // Pegandos os valores por binding
@@ -29,8 +42,8 @@ class CadastroAvaliacaoActivity : AppCompatActivity() {
             val peso = binding.edtPeso.text.toString();
             val data = binding.edtData.text.toString();
             val conteudos = binding.edtConteudos.text.toString();
-            val idDisciplina = 1; // just for tests
-            val idAvaliacao= 0; // just for tests
+            val idDisciplina = disciplina;
+            val idAvaliacao= idAvaliacao;
 
             cadastroAvaliacaoViewModel.salvar(nome, nota, peso, data, conteudos, idDisciplina, idAvaliacao);
         }

@@ -40,21 +40,21 @@ class CadastroAvaliacaoViewModel(application: Application) : AndroidViewModel(ap
         }
 
         // Pegando as notas já cadastradas
-        val notasAvaliacoes = avaliacaoRepository.getNotasAvaliacoes(idDisciplina);
-        val saldoDeNotaParaCadastrar = notasAvaliacoes - 10;
+        val pesosAvaliacoes = avaliacaoRepository.getPesosAvaliacoes(idDisciplina);
+        val saldoDePesoParaCadastrar = 10 - pesosAvaliacoes ;
 
         val notaParaCadastrar = notaAva.toDouble();
         val pesoParaCadastrar = pesoAva.toDouble();
 
         // Validando o saldo disponivel de nota para cadastro
-        if (notaParaCadastrar > saldoDeNotaParaCadastrar) {
+        if (pesoParaCadastrar > saldoDePesoParaCadastrar) {
             txtToast.value = "A nota não pode ser maior que a média total";
             return false;
         }
 
         // Validadndo o valor do peso com o valor da nota
-        if (pesoParaCadastrar > notaParaCadastrar) {
-            txtToast.value = "O peso não pode ser maior que a nota";
+        if (pesoParaCadastrar < notaParaCadastrar) {
+            txtToast.value = "A nota não pode ser maior que o peso";
             return false;
         }
 
