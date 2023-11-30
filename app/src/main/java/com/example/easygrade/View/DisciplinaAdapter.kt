@@ -26,7 +26,7 @@ class DisciplinaAdapter (var context: Context): RecyclerView.Adapter<DisciplinaV
         val fakeNota = 7; // todo calcular a nota somando todos as notas das avaliacoes
 
         //val nota_peso = disciplina.nota.toString() + "/" + disciplina.peso.toString();
-        holder.txtDisciplina.text = "${disciplina.nome} "
+        holder.txtDisciplina.text = "${disciplina.nome} ";
         holder.txtNota.text = "${fakeNota}/${disciplina.media}";
 
 /* todo

@@ -39,8 +39,27 @@ class CadastroAvaliacaoViewModel(application: Application) : AndroidViewModel(ap
             return false;
         }
 
+        // Pegando as notas já cadastradas
+        val notasAvaliacoes = avaliacaoRepository.getNotasAvaliacoes();
+        val saldoDeNotaParaCadastrar = notasAvaliacoes - 10;
+
+        val notaParaCadastrar = notaAva.toDouble();
+        val pesoParaCadastrar = pesoAva.toDouble();
+
+        // Validando o saldo disponivel de nota para cadastro
+        if (notaParaCadastrar > saldoDeNotaParaCadastrar) {
+            txtToast.value = "A nota não pode ser maior que a média total";
+            return false;
+        }
+
+        // Validadndo o valor do peso com o valor da nota
+        if (pesoParaCadastrar > notaParaCadastrar) {
+            txtToast.value = "O peso não pode ser maior que a nota";
+            return false;
+        }
+
         // criar objeto do tipo avaliacao
-        var avaliacao = Avaliacao(0, nomeAva, notaAva.toDouble(), pesoAva.toDouble(), dataAva, counteudosAva, idDisciplina);
+        var avaliacao = Avaliacao(0, nomeAva, notaParaCadastrar, pesoAva.toDouble(), dataAva, counteudosAva, idDisciplina);
 
         // tentar salvar objeto criado acima
         if (!avaliacaoRepository.salvar(avaliacao)) {
