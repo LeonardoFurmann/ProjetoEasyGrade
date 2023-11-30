@@ -23,8 +23,14 @@ interface AvaliacaoDAO {
     @Query("SELECT * FROM avaliacoes WHERE id = :id")
     fun getAvaliacao(id: Int) : Avaliacao
 
+    @Query("SELECT * FROM avaliacoes WHERE id = :id AND IdDisciplina = :idDisciplina")
+    fun getAvaliacaoPorDisciplina(id: Int, idDisciplina: Int): Avaliacao
+
     @Query("SELECT * FROM avaliacoes")
     fun getAvaliacoes() : List<Avaliacao>
+
+    @Query("SELECT * FROM avaliacoes WHERE IdDisciplina = :id")
+    fun getAvaliacoesPorDisciplina(id: Int): List<Avaliacao>
 
     @Query("SELECT COUNT(*) FROM avaliacoes")
     fun getCountAvaliacoes() : Int

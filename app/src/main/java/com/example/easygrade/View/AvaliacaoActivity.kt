@@ -24,7 +24,7 @@ class AvaliacaoActivity : AppCompatActivity() {
 
 
 
-        avalicaoAdapter = AvaliacaoAdapter(this)
+        avalicaoAdapter = AvaliacaoAdapter(this, idDisciplina);
 
         binding.rcvAvaliacoes.layoutManager = LinearLayoutManager(this)
         binding.rcvAvaliacoes.adapter = avalicaoAdapter

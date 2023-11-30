@@ -23,6 +23,10 @@ class AvaliacaoRepository(context: Context) {
         return dao.getAvaliacoes()
     }
 
+    fun getAvaliacoesPorDisciplina(): List<Avaliacao> {
+        return dao.getAvaliacoes()
+    }
+
     fun getPesosAvaliacoes(id: Int): Int {
         return dao.getPesosAvaliacoes(id);
     }
