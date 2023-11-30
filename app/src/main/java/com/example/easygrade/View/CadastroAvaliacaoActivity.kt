@@ -45,7 +45,9 @@ class CadastroAvaliacaoActivity : AppCompatActivity() {
             val idDisciplina = disciplina;
             val idAvaliacao= idAvaliacao;
 
-            cadastroAvaliacaoViewModel.salvar(nome, nota, peso, data, conteudos, idDisciplina, idAvaliacao);
+            if (cadastroAvaliacaoViewModel.salvar(nome, nota, peso, data, conteudos, idDisciplina, idAvaliacao)) {
+                finish();
+            }
         }
     }
 
