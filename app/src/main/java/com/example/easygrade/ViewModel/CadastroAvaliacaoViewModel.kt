@@ -40,7 +40,7 @@ class CadastroAvaliacaoViewModel(application: Application) : AndroidViewModel(ap
         }
 
         // Pegando as notas já cadastradas
-        val notasAvaliacoes = avaliacaoRepository.getNotasAvaliacoes();
+        val notasAvaliacoes = avaliacaoRepository.getNotasAvaliacoes(idDisciplina);
         val saldoDeNotaParaCadastrar = notasAvaliacoes - 10;
 
         val notaParaCadastrar = notaAva.toDouble();

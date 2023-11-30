@@ -29,6 +29,6 @@ interface AvaliacaoDAO {
     @Query("SELECT COUNT(*) FROM avaliacoes")
     fun getCountAvaliacoes() : Int
 
-    @Query("SELECT SUM(nota) FROM avaliacoes")
-    fun getNotasAvaliacoes(): Int
+    @Query("SELECT SUM(nota) FROM avaliacoes WHERE IdDisciplina = :id")
+    fun getNotasAvaliacoes(id: Int): Int
 }

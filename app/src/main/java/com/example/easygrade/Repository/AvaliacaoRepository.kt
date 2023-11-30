@@ -23,8 +23,8 @@ class AvaliacaoRepository(context: Context) {
         return dao.getAvaliacoes()
     }
 
-    fun getNotasAvaliacoes(): Int {
-        return dao.getNotasAvaliacoes();
+    fun getNotasAvaliacoes(id: Int): Int {
+        return dao.getNotasAvaliacoes(id);
     }
 
     fun atualizar(avaliacao: Avaliacao){
